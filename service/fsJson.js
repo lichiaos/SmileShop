@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-fs.readFile('.goods.json', 'utf-8', (err, data) => {
+fs.readFile('./goods.json', 'utf-8', (err, data) => {
   if (!err) {
     let newData = JSON.parse(data)
     let i = 0

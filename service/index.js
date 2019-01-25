@@ -6,26 +6,26 @@ const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const Router = require('koa-router')
 
-let User = require('./database/schema/User.js')
-
 app.use(bodyParser())
 app.use(cors())
 
 let user = require('./api/User.js')
 let goods = require('./api/goods')
+let lady = require('./api/lady')
 
 // 装载所有子路由
 let router = new Router()
 router.use('/user', user.routes())
 router.use('/goods', goods.routes())
+router.use('/lady', lady.routes())
 
 // 加载路由中间件
 app.use(router.routes())
 app.use(router.allowedMethods())
 
 ;(async () => {
-  await connect()
   initSchemas()
+  await connect()
 })()
 
 app.listen(3000, () => {

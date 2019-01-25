@@ -40,5 +40,4 @@ userSchema.methods = {
   }
 }
 
-const User = mongoose.model('User', userSchema)
-exports = User
+exports.User = mongoose.model('User', userSchema)

@@ -14,11 +14,13 @@ htmlDom.style.fontSize = documentWidth / 20 + 'px'      // iphone5 下320px 刚�
 
 
 ## 项目中遇到的问题
-* 在使用三层循环的时候会报错, 导致页面加载不出来, 可以在上面用v-if进行判断
-* *报错:* E11000 duplicate key error collection: smile-db.user index: userName_1 dup key: { : null }
+1. 在使用三层循环的时候会报错, 导致页面加载不出来, 可以在上面用v-if进行判断
+2.  *报错:* E11000 duplicate key error collection: smile-db.user index: userName_1 dup key: { : null }
 ```$xslt
   在集合里面定义了唯一值, 但是前端传递的是时候参数和集合参数不一致,导致报错
 ```
+3. 在koa入口, 会初始化连接和数据库和引入用到的所有schema, 但是将数据库连接会不执行下面的映入语句
+* 解决: 改变他们的执行顺序
 ## 代办
 1. axios封装
 2. 首页缓存

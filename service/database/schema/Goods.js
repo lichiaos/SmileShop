@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema // 声明Schema
-let ObjectId = Schema.Types.ObjectIds
 
 const goodsSchema = new Schema({
   ID: {
@@ -33,5 +32,29 @@ const goodsSchema = new Schema({
   collection: 'Goods'
 })
 
-const Goods = mongoose.model('Goods', goodsSchema)
-exports = Goods
+// 分类商品
+const categorySchema = new Schema({
+  ID: {unique: true, type: String},
+  MALL_CATEGORY_NAME: {type: String},
+  IMAGE: {type: String},
+  TYPE: {type: Number},
+  SORT: {type: Number},
+  COMMENTS: {type: String}
+}, {
+  collection: 'Category'
+})
+
+// 分类子商品
+const categorySubSchema = new Schema({
+  ID: {unique: true, type: String},
+  MALL_CATEGORY_ID: {type: String},
+  MALL_SUB_NAME: {type: String},
+  COMMENTS: {type: String},
+  SORT: {type: Number}
+}, {
+  collection: 'CategorySub'
+})
+
+exports.Goods = mongoose.model('Goods', goodsSchema)
+exports.Category = mongoose.model('Category', categorySchema)
+exports.CategorySub = mongoose.model('CategorySub', categorySubSchema)

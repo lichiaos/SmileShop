@@ -45,6 +45,11 @@ export default new Router({
       component: () => import('@/pages/Personal/Personal')
     },
     {
+      path: '/goods',
+      name: 'goods',
+      component: () => import('@/components/goods')
+    },
+    {
       path: '*',
       redirect: '/404'
     }
