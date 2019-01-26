@@ -25,7 +25,8 @@ import {
   Tabs,
   TreeSelect,
   Cell,
-  PullRefresh
+  PullRefresh,
+  Toast
 } from 'vant'
 Vue
   .use(Button)
@@ -44,6 +45,7 @@ Vue
   .use(TreeSelect)
   .use(Cell)
   .use(PullRefresh)
+  .use(Toast)
   .use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false

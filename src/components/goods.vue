@@ -26,7 +26,7 @@
     <!--底部购物车-->
     <div class="goods-bottom">
       <div>
-        <van-button size="large" type="primary">加入购物车</van-button>
+        <van-button size="large" type="primary" @click="addToCart">加入购物车</van-button>
       </div>
       <div>
         <van-button size="large" type="danger">直接购买</van-button>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import { Toast } from 'vant'
 export default {
   data () {
     return {
@@ -56,6 +56,27 @@ export default {
       console.log(res)
       this.goodsInfo = res.data
       console.log(this.goodsInfo)
+    },
+    /**
+     * 先判断是否购物车中是否有这个商品,然后添加
+     */
+    addToCart () {
+      let CartInfo = this.$store.state.Cart.CartInfo
+      let isAddToCart = CartInfo.find(item => item.goodsId)
+      if (!isAddToCart) {
+        let newGoods = {
+          goodsId: this.goodsInfo.ID,
+          Name: this.goodsInfo.NAME,
+          price: this.goodsInfo.PRESENT_PRICE,
+          image: this.goodsInfo.IMAGE1,
+          count: 1
+        }
+        this.$store.commit('Cart/addGoods', newGoods)
+        Toast.success('添加成功')
+      } else {
+        Toast.success('已有此商品')
+      }
+      this.$router.push({name: 'cart'})
     }
   }
 }
