@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import * as filters from './utils/filter'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -22,7 +23,9 @@ import {
   TabbarItem,
   Tab,
   Tabs,
-  TreeSelect
+  TreeSelect,
+  Cell,
+  PullRefresh
 } from 'vant'
 Vue
   .use(Button)
@@ -39,6 +42,8 @@ Vue
   .use(Tab)
   .use(Tabs)
   .use(TreeSelect)
+  .use(Cell)
+  .use(PullRefresh)
   .use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false
@@ -55,6 +60,7 @@ Vue.prototype.$URL = url
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
