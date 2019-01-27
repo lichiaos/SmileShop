@@ -26,7 +26,9 @@ import {
   TreeSelect,
   Cell,
   PullRefresh,
-  Toast
+  Toast,
+  SubmitBar,
+  Stepper
 } from 'vant'
 Vue
   .use(Button)
@@ -46,6 +48,8 @@ Vue
   .use(Cell)
   .use(PullRefresh)
   .use(Toast)
+  .use(SubmitBar)
+  .use(Stepper)
   .use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false

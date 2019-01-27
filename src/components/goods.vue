@@ -53,15 +53,14 @@ export default {
       let res = await this.$http.post(this.$URL.getDetail, {
         goodsId: this.goodsId
       })
-      console.log(res)
       this.goodsInfo = res.data
-      console.log(this.goodsInfo)
     },
     /**
      * 先判断是否购物车中是否有这个商品,然后添加
      */
     addToCart () {
-      let CartInfo = this.$store.state.Cart.CartInfo
+      let CartInfo = this.$store.state.Cart.cartInfo
+      console.log(this.$store.state)
       let isAddToCart = CartInfo.find(item => item.goodsId)
       if (!isAddToCart) {
         let newGoods = {
@@ -71,7 +70,7 @@ export default {
           image: this.goodsInfo.IMAGE1,
           count: 1
         }
-        this.$store.commit('Cart/addGoods', newGoods)
+        this.$store.commit('addGoods', newGoods)
         Toast.success('添加成功')
       } else {
         Toast.success('已有此商品')

@@ -128,7 +128,7 @@ router.post('/getCategorySubList', async ctx => {
 router.post('/getGoodsListByCategorySubID', async (ctx) => {
   try {
     let categorySubId = ctx.request.body.categoryId
-    let page = ctx.request.page.page
+    let page = ctx.request.body.page
     let num = 10 // 每页显示数
     let start = (page - 1) * num
     const Goods = mongoose.model('Goods')
