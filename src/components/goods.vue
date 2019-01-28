@@ -8,20 +8,22 @@
         @click-left="$router.go(-1)"
       />
     </div>
-    <div class="topimage-div">
-      <img :src="goodsInfo.IMAGE1" alt="">
-    </div>
-    <div class="goods-name">{{goodsInfo.NAME}}</div>
-    <div class="goods-price">价格：{{goodsInfo.PRESENT_PRICE | money}}</div>
-    <div>
-      <van-tabs swipeable sticky>
-        <van-tab title="商品详情">
-          <div class="detail" v-html="goodsInfo.DETAIL" />
-        </van-tab>
-        <van-tab title="评价">
-          正在制作中
-        </van-tab>
-      </van-tabs>
+    <div v-if="goodsInfo">
+      <div class="topimage-div">
+        <img :src="goodsInfo.IMAGE1" alt="">
+      </div>
+      <div class="goods-name">{{goodsInfo.NAME}}</div>
+      <div class="goods-price">价格：{{goodsInfo.PRESENT_PRICE | money}}</div>
+      <div>
+        <van-tabs swipeable sticky>
+          <van-tab title="商品详情">
+            <div class="detail" v-html="goodsInfo.DETAIL" />
+          </van-tab>
+          <van-tab title="评价">
+            正在制作中
+          </van-tab>
+        </van-tabs>
+      </div>
     </div>
     <!--底部购物车-->
     <div class="goods-bottom">
@@ -48,12 +50,23 @@ export default {
     this.goodsId = this.$route.query.goodsId || this.$route.params.goodsId
     this.getDetail()
   },
+  beforeRouteEnter (from, to, next) {
+    if (from.name === 'cart') {
+      let DetailData = sessionStorage.getItem('DetailData')
+      this.goodsInfo = JSON.parse(DetailData)
+    } else {
+      next(vm => {
+        vm.getDetail()
+      })
+    }
+  },
   methods: {
     async getDetail () {
       let res = await this.$http.post(this.$URL.getDetail, {
         goodsId: this.goodsId
       })
       this.goodsInfo = res.data
+      sessionStorage.setItem('DetailData', JSON.stringify(this.goodsInfo))
     },
     /**
      * 先判断是否购物车中是否有这个商品,然后添加
@@ -61,7 +74,7 @@ export default {
     addToCart () {
       let CartInfo = this.$store.state.Cart.cartInfo
       console.log(this.$store.state)
-      let isAddToCart = CartInfo.find(item => item.goodsId)
+      let isAddToCart = CartInfo.find(item => item.goodsId === this.goodsInfo.ID)
       if (!isAddToCart) {
         let newGoods = {
           goodsId: this.goodsInfo.ID,

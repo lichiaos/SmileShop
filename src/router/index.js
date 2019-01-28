@@ -40,6 +40,11 @@ export default new Router({
       component: () => import('@/pages/ShopCart/ShopCart')
     },
     {
+      path: '/center',
+      name: 'center',
+      component: () => import('@/pages/Center')
+    },
+    {
       path: '/my',
       name: 'my',
       component: () => import('@/pages/Personal/Personal')

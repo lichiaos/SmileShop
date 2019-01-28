@@ -25,10 +25,12 @@ import {
   Tabs,
   TreeSelect,
   Cell,
+  CellGroup,
   PullRefresh,
   Toast,
   SubmitBar,
-  Stepper
+  Stepper,
+  Checkbox
 } from 'vant'
 Vue
   .use(Button)
@@ -50,6 +52,8 @@ Vue
   .use(Toast)
   .use(SubmitBar)
   .use(Stepper)
+  .use(Checkbox)
+  .use(CellGroup)
   .use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false

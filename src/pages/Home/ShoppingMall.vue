@@ -111,7 +111,7 @@ export default {
 <style lang="scss" scoped>
   .search-bar {
     height: 2.2rem;
-    background-color: #e5017d;
+    background-color: salmon;
     position: fixed;
     line-height: 2rem;
     top: 0;
@@ -125,7 +125,7 @@ export default {
       border-left: 0px;
       border-right: 0px;
       border-bottom: 1px solid 1px !important;
-      background: #e5017d;
+      background: salmon;
       color: #000;
     }
   }
@@ -157,7 +157,7 @@ export default {
       border-bottom: 1px solid #eee;
       font-size: 14px;
       padding: .2rem;
-      color: #e5017d;
+      color: salmon;
     }
     .recommend-body {
       border-bottom: 1px solid #eee;
