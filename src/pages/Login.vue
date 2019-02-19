@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     login () {
-      // 123123123
+      // asdasdasd
       this.checkForm() && this.request()
     },
     async request () {
