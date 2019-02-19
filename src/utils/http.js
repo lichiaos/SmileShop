@@ -97,7 +97,7 @@ instance.interceptors.response.use(
       *  显示断网提示组件
       * */
       // store.commit('changeNetwork', false)
-      console.log('断网了')
+      Toast.fail('断网了')
     }
   }
 )

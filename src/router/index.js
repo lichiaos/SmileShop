@@ -45,6 +45,11 @@ export default new Router({
       component: () => import('@/pages/Center')
     },
     {
+      path: '/center/images',
+      name: 'images',
+      component: () => import('@/pages/Center/ImageDetail')
+    },
+    {
       path: '/my',
       name: 'my',
       component: () => import('@/pages/Personal/Personal')
