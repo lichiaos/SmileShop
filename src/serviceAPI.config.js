@@ -8,8 +8,6 @@ const URL = {
   getDetail: LOCALURL + 'goods/getDetailGoodsInfo', // 获取商品详情页
   getCategoryList: LOCALURL + 'goods/getCategoryList', // 得到大类列表
   getCategorySubList: LOCALURL + 'goods/getCategorySubList', // 根据大类获取子类
-  getCategoryContent: LOCALURL + 'goods/getGoodsListByCategorySubID', // 根据子类标题获取内容
-  getAvatarList: LOCALURL + 'lady/getAvatarList', // 获取头像列表
-  getImgDetail: LOCALURL + 'lady/getImgDetail' // 根据头像列表获取详情图片
+  getCategoryContent: LOCALURL + 'goods/getGoodsListByCategorySubID' // 根据子类标题获取内容
 }
 module.exports = URL
